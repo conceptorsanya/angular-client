@@ -1,1 +1,17 @@
+machine:
+  node:
+    version: 10.1.0
+  services:
+   - docker
 
+dependencies:
+  post:
+    - docker build -t angular-client:dev .
+
+test:
+  post:
+    - docker run -d --name angular-client -p 4200:4200 angular-client:dev
+    - curl --retry 10 --retry-delay 5 localhost:4200 | 
+
+    
+   
